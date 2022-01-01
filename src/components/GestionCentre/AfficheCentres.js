@@ -65,18 +65,22 @@ const layout = {
 
   return(
       <div>
+         <br/>
+        <Button>
+         <Link to='/Ajoutecentre'>Ajoute Centre</Link></Button>
+         <br />
+<br/>
     {!updateMode ? (
+      
         <>
-<Card title="Centre de vaccination" >
+
     <Card type="inner" title="Centre de vaccination" extra={<Link to={`/centre/${id}`}>Voir</Link>}>
       <a>{libelle_fr}</a>
       <br/>
       <br/>
       <Button onClick={() => setUpdateMode(true)}>Modifier</Button>
       <Button onClick={() => supprimerCentre(id)}>Supprimer</Button>
-    </Card>
-    
-  </Card>
+      </Card>
   </>
   ) : (
     <div style={{padding: 200, margin: 50}}>

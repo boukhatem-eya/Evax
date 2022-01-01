@@ -11,8 +11,8 @@ function AffectationVaccin(){
     console.log(vaccins.vaccin)
     console.log(centres)
     const dispatch = useDispatch()
-    const [vaccin_id, setVaccin_id] = useState("")
-    const [centre_id, setCentre_id] = useState("")
+    const [marque_vaccin, setMarque_vaccin] = useState("")
+    const [centre_de_vaccination, setCentre_de_vaccination] = useState("")
 const layout = {
     labelCol: {
       span: 8,
@@ -38,18 +38,18 @@ const layout = {
     dispatch(actionsvaccin.affichevaccins())
   }, [])
   const onFinish = (values) => {
-    ajouteaffectation(values.vaccin, values.centre)
+    ajouteaffectation(values.marque_vaccin, values.centre_de_vaccination)
   };
 
-  const ajouteaffectation = (vaccin, centre) => {
-    console.log(vaccin, centre)
-    dispatch(actions.ajouteaffectation({vaccin, centre}))}
+  const ajouteaffectation = (marque_vaccin, centre_de_vaccination) => {
+    console.log(marque_vaccin, centre_de_vaccination)
+    dispatch(actions.ajouteaffectation({marque_vaccin, centre_de_vaccination}))}
   return (
 
 <div style={{padding: 200, margin: 50}}>
 
         <Form {...layout} name="nest-messages"  validateMessages={validateMessages} onFinish={onFinish}>
-           <Form.Item  name="vaccin" label="Choisir vaccin">
+           <Form.Item  name="marque_vaccin" label="Choisir vaccin">
             <Select>
             {vaccins.map( vaccin => {
              return(
@@ -57,7 +57,7 @@ const layout = {
     )})}
   </Select>
   </Form.Item>
-   <Form.Item  name="centre" label="Choisir centre">
+   <Form.Item  name="centre_de_vaccination" label="Choisir centre">
             <Select>
             {centres.map( centre => {
     return(

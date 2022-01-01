@@ -6,7 +6,9 @@ import {
   Route,
   Redirect,
 } from "react-router-dom"
-import ListPharmacie from './components/ValidationPharmacie/ListPharmacie'
+import React, { useState, useEffect } from "react"
+import { useDispatch } from "react-redux"
+import * as actions from './redux/actions/connexion/connexionadmin'
 import FormulaireInscription from './components/GestionPharmacie/inscriptionpharmacie/FormulaireInscription';
 import Accueil from './components/Accueil/Accueil';
 import Connexionpharmacie from './components/ConnexionPharmacie/Connexionpharamcie';
@@ -23,20 +25,31 @@ import DetailsVaccin from './components/Vaccin/GestionVaccins/DetailsVaccin';
 import AffectationVaccin from './components/Vaccin/AffectationVaccin/AffectationVaccin';
 import ListPageInscription from './components/Validation/ListPageInscription'
 import DetailsInscription from './components/Validation/DetailsInscription';
+import setAuthToken from './helpers/setAuthToken';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    console.log('app')
+    dispatch(actions.loadAdmin()) 
+  }, [])
   return (
     
     <div className="App">
       <Router>
     <Switch>
     <Route exact path="/">
-              <Redirect to="/Accueil" />
+              <Redirect to="/Connexionadmin" />
             </Route>
-            <Route exact path="/Accueil">
+            <Route exact path="/Connexionadmin">
+              <ConnexionAdmin  />
+            </Route>
+            <Route exact path="/Tableau de bord">
               <Accueil />
-            </Route>
-            <Route exact path="/ListPharmacie">
-              <ListPharmacie />
             </Route>
       <Route exact path="/FrormulaireInscription">
       <FormulaireInscription />
@@ -47,16 +60,13 @@ function App() {
       <Route exact path="/Connexionpharmacie">
       <Connexionpharmacie />
       </Route>
-      <Route exact path="/Connexionadmin">
-      <ConnexionAdmin />
-      </Route>
       <Route exact path="/Ajoutecentre">
       <FormulaireAjouteCentre />
       </Route>
-      <Route exact path="/Affichecentres">
+      <Route exact path="/Affichecentrestableau">
       <ListCentre />
       </Route>
-      <Route exact path="/Affiche">
+      <Route exact path="/AfficheListCentres">
       <List />
       </Route>
       <Route exact path="/Listpagevaccin">
@@ -74,7 +84,7 @@ function App() {
             <Route exact path="/inscription/:inscriptionId">
               < DetailsInscription/>
             </Route>
-            <Route exact path="/gestionpharmacies">
+            <Route exact path="/gestionpharmacies!!!!!">
               < AfficheList/>
             </Route>
             <Route exact path="/affectationvaccin">

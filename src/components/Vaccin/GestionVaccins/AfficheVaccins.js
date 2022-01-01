@@ -57,15 +57,17 @@ const layout = {
       <div>
     {!updateMode ? (
         <>
-<Card title="Vaccin" >
+         <br/>
+        <Button>
+         <Link to='/Ajoutevaccin'>Ajoute Vaccin</Link></Button>
+         <br />
+<br/>
     <Card type="inner" title="Vaccin" extra={<Link to={`/vaccin/${id}`}>Voir</Link>}>
       <a>{marque_vaccin}</a>
       <br/>
       <br/>
       <Button onClick={() => setUpdateMode(true)}>Modifier</Button>
       <Button onClick={() => supprimerVaccin(id)}>Supprimer</Button>
-    </Card>
-    
   </Card>
   </>
   ) : (

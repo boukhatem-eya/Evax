@@ -3,12 +3,14 @@ import 'antd/dist/antd.css';
 import { Form, Input, Button } from 'antd';
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/admin/adminconnexion"
+import { Redirect, Link } from 'react-router-dom';
 
 function ConnexionAdmin(){
     const [email, setEmail] = useState("")
     const [mot_de_passe, setMot_de_passe] = useState("")
     //console.log(code , email)
     const dispatch = useDispatch()
+    const isAuth = useSelector((state) => state.adminconnexion.isAuthenticated)
 
   const onFinish = (values) => {
      Connexion(values.email, values.mot_de_passe)
@@ -23,7 +25,9 @@ function ConnexionAdmin(){
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
-
+  if (isAuth) {
+     return <Redirect to='/Tableau de bord' />;
+  }
   return (
     <Form
       name="basic"

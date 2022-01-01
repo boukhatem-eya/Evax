@@ -48,7 +48,7 @@ export const login = ({
             type: types.ADMIN_SUCCES,
             payload: res.data
         })
-        dispatch(loadPharmacie())
+        dispatch(loadAdmin())
     } catch (err) {
         const errors = err.response.data.errors
         if (errors) {

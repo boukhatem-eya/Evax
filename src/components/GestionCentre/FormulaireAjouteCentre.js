@@ -155,7 +155,7 @@ function FormulaireAjouteCentre (){
         
             <InputNumber />
           </Form.Item>
-          <Form.Item name="capacite_accueil" label="Capacité d'accueil"
+          <Form.Item name="capacite_accueil" label="Capacité d'accueil tous les 30 minutes"
          rules={[
             {
               type: 'number',
