@@ -10,7 +10,9 @@ console.log(centres.list)
   const dispatch = useDispatch()
 
   const [loading, setLoading] = useState(false)
-  // const [tasks, setTasks] = useState([])
+  useEffect(() => {
+    document.title = "List des centres"
+  })
 
   const [isVisible, setIsVisible] = useState(true)
   const toggleVisibility = () => {

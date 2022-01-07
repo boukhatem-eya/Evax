@@ -10,7 +10,9 @@ console.log(vaccins.list)
   const dispatch = useDispatch()
 
   const [loading, setLoading] = useState(false)
-  // const [tasks, setTasks] = useState([])
+  useEffect(() => {
+    document.title = "List des vaccins"
+  })
 
   const [isVisible, setIsVisible] = useState(true)
   const toggleVisibility = () => {

@@ -48,7 +48,7 @@ export const login = ({
             type: types.CONNEXION_PHARMACIES_SUCCES,
             payload: res.data
         })
-        dispatch(loadPharmacie())
+        // dispatch(loadPharmacie())
     } catch (err) {
         const errors = err.response.data.errors
         if (errors) {

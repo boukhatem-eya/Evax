@@ -1,5 +1,8 @@
 import * as types from "../../types"
 import * as api from "../../../services/vaccin.service"
+import {
+  toast
+} from 'react-toastify';
 
 
 export const setSelectedVaccin = (id) => ({
@@ -20,7 +23,12 @@ export const ajoutevaccin = (vaccin) => async (dispatch) => {
         type: types.AJOUTE_VACCIN_SUCCES,
         vaccin: nouveauVacin,
       })
-     } catch (e) {
+     } catch (error) {
+      const errors = error.response.data.errors
+      console.log(error)
+      if (errors) {
+          errors.forEach(error => toast.error(error.msg))
+      }
       dispatch({
         type: types.AJOUTE_VACCIN_ECHEC,
       })

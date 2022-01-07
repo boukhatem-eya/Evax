@@ -7,7 +7,8 @@ import adminconnexion from "./adminconnexion"
 import gestionvaccin from "./gestionvaccin"
 import affectationvaccin from "./affectationvaccin"
 import validationinscription from "./validationinscription"
-
+import gestionvolontaire from './volontaire'
+import visiteurs from "./visiteurs"
 
 const rootReducer = () =>{
  return combineReducers({
@@ -19,6 +20,8 @@ const rootReducer = () =>{
     gestionvaccin,
     affectationvaccin,
     validationinscription,
+    gestionvolontaire,
+    visiteurs,
   })
 }
 

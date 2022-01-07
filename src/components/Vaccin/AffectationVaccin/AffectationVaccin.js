@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DatePicker, Select, Button, Form, Input, InputNumber } from 'antd';
 import 'antd/dist/antd.css';
+import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import * as actionscentre from '../../../redux/actions/centre/centre'
 import * as actionsvaccin from '../../../redux/actions/vaccin/vaccin'
@@ -13,6 +14,9 @@ function AffectationVaccin(){
     const dispatch = useDispatch()
     const [marque_vaccin, setMarque_vaccin] = useState("")
     const [centre_de_vaccination, setCentre_de_vaccination] = useState("")
+    useEffect(() => {
+      document.title = "Affectation vaccins"
+    })
 const layout = {
     labelCol: {
       span: 8,
@@ -47,6 +51,10 @@ const layout = {
   return (
 
 <div style={{padding: 200, margin: 50}}>
+<Button>
+         <Link to='/Tableau de bord'>Retour</Link></Button>
+         <br />
+<br/>
 
         <Form {...layout} name="nest-messages"  validateMessages={validateMessages} onFinish={onFinish}>
            <Form.Item  name="marque_vaccin" label="Choisir vaccin">

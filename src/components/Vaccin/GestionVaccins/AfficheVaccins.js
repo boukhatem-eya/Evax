@@ -18,7 +18,7 @@ const onFinish = (values) => {
   setUpdateMode(false)
 }
 useEffect(() => {
-  document.title = marque_vaccin
+  document.title = "List des vaccins"
 })
 useEffect(() => {
   if (updateMode) {
@@ -28,13 +28,7 @@ useEffect(() => {
     dispatch(actions.setSelectedVaccin(""))
   }
 }, [updateMode])
-// const afficheCentre =()=>{
-//     dispatch(actions.afficherCentre(id))
-// }
-// const history = useHistory()
-// const affichedetailsCentre = () => {
-//   history.push(`/centre/${id}`)
-// }
+
 const layout = {
     labelCol: {
       span: 8,
@@ -55,13 +49,19 @@ const layout = {
 
   return(
       <div>
-    {!updateMode ? (
-        <>
-         <br/>
+           <br/>
         <Button>
          <Link to='/Ajoutevaccin'>Ajoute Vaccin</Link></Button>
          <br />
 <br/>
+<br/>
+        <Button>
+         <Link to='/Tableau de bord'>Retour</Link></Button>
+         <br />
+<br/>
+    {!updateMode ? (
+        <>
+      
     <Card type="inner" title="Vaccin" extra={<Link to={`/vaccin/${id}`}>Voir</Link>}>
       <a>{marque_vaccin}</a>
       <br/>

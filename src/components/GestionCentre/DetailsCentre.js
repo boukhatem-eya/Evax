@@ -3,21 +3,22 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import * as actions from "../../redux/actions/centre/centre"
-import { Descriptions } from 'antd';
+import { Descriptions, Button } from 'antd';
+import { Link } from "react-router-dom"
 import 'antd/dist/antd.css';
 
 
 function DetailsCentre() {
-  const [loading, setLoading] = useState(false)
+  
   const centre = useSelector((state) => (state.gestioncentre && state.gestioncentre.selectedCentre))
   // const [task, setTask] = useState({})
   const dispatch = useDispatch()
 
   const { centreId } = useParams()
   console.log(centreId)
-  // console.log("useParams(): ", useParams())
-  // console.log("useLocation(): ", useLocation())
-
+  useEffect(() => {
+    document.title = "Voir Détails"
+  })
   useEffect(() => {
 
     // const fetchData = async () => {
@@ -36,10 +37,11 @@ function DetailsCentre() {
   // }, [task])
   return (
     <div >
-          {loading ? (
-        <div>Loading ... </div>
-      ) : (
-        <>
+      <Button>
+         <Link to='/AfficheListCentres'>Retour</Link></Button>
+         <br />
+<br/>
+        
       <Descriptions title="Informations du centre">
     <Descriptions.Item label="Gouvernant">{centre.gouvernant}</Descriptions.Item>
     <Descriptions.Item label="Delegation">{centre.delegation}</Descriptions.Item>
@@ -58,8 +60,7 @@ function DetailsCentre() {
      {centre.stocke}
     </Descriptions.Item>
   </Descriptions>,
-  </>
-    )}
+  
     </div>
     
   )

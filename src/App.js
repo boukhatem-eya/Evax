@@ -26,31 +26,61 @@ import AffectationVaccin from './components/Vaccin/AffectationVaccin/Affectation
 import ListPageInscription from './components/Validation/ListPageInscription'
 import DetailsInscription from './components/Validation/DetailsInscription';
 import setAuthToken from './helpers/setAuthToken';
+import ReactGa from 'react-ga'
+
+import AfficheVolontaires from './components/Volontaire/AfficheVolontaires';
+import FormulaireAjouteVolontaire from './components/Volontaire/FormulaireAjouteVolontaire';
+import DetailsVolontaire from './components/Volontaire/DetailsVolontaire';
+import ListPageV from './components/Volontaire/ListPageV';
+import ListVolontaires from './components/Volontaire/ListVolontaires';
+
+// import AfficheJpo from './components/Jpo/AfficheJpo';
+import FormulaireAjouteJpo from './components/Jpo/FormulaireAjouteJpo';
+// import ListPageJ from './components/Jpo/ListPageV';
+import ListeJpos from './components/Jpo/ListeJpos';
+
+import AjoutCitoyen from './components/AffectationRendezVous/AjoutCitoyen';
+
+import FormulaireInscriptionCentre from './visiteur/inscriptionvisiteur/inscriptionvisiteurcentre/FormulaireInscriptionCentre';
+import FormulaireInscriptionPharmacie from './visiteur/inscriptionvisiteur/inscriptionvisiteurpharmacie/FormulaireInscriptionPharmacie';
+import Mettrejourinscription from './visiteur/inscriptionvisiteur/mettrejourinscription/Mettrejourinscription';
+import Raporterrendezvous from './visiteur/inscriptionvisiteur/repoterrendezvous/Repoterrendezvous';
+import Connexionvisiteur from './visiteur/ConnexionVisiteur/Connexionvisiteur';
+import Contacteznous from './visiteur/ContactezNous/Contacteznous';
+import Profilvisiteur from './visiteur/ProfilVisiteur/Profilvisiteur';
+import Affectationrendezvous from './visiteur/affectationrendezvous/Affectationrendezvous'
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
 function App() {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    console.log('app')
-    dispatch(actions.loadAdmin()) 
+  useEffect(()=> {
+    ReactGa.initialize('G-93F99NLW7T')
+    ReactGa.pageview('/')
   }, [])
+  const dispatch = useDispatch()
+  // useEffect(() => {
+  //   console.log('app')
+  //   dispatch(actions.loadAdmin()) 
+  // }, [])
   return (
     
     <div className="App">
       <Router>
     <Switch>
     <Route exact path="/">
-              <Redirect to="/Connexionadmin" />
-            </Route>
-            <Route exact path="/Connexionadmin">
-              <ConnexionAdmin  />
+              <Redirect to="/Tableau de bord" />
             </Route>
             <Route exact path="/Tableau de bord">
               <Accueil />
             </Route>
+            <Route exact path="/Connexionadmin">
+              <ConnexionAdmin  />
+            </Route>
+            <Route exact path="/AjoutCitoyen">
+      <AjoutCitoyen />
+      </Route>  
       <Route exact path="/FrormulaireInscription">
       <FormulaireInscription />
       </Route>
@@ -93,6 +123,55 @@ function App() {
             <Route exact path="/afficherlistinscription">
               < ListPageInscription/>
             </Route>
+
+
+            <Route exact path="/FormulaireAjouteVolontaire">
+              <FormulaireAjouteVolontaire />
+            </Route>
+
+             <Route exact path="/ListVolontaires">
+              <ListPageV />
+            </Route>
+
+            <Route exact path="/FormulaireAjouteJpos">
+              <FormulaireAjouteJpo />
+            </Route>
+            <Route exact path="/ListeJpos">
+              <ListeJpos />
+            </Route>
+
+            <Route exact path="/inscriptioncentre">
+              <FormulaireInscriptionCentre/>
+            </Route>
+
+            <Route exact path="/inscriptionpharmacie">
+              <FormulaireInscriptionPharmacie/>
+            </Route>
+
+            <Route exact path="/authentificationvisiteur">
+              <Connexionvisiteur/>
+            </Route>
+
+            <Route exact path="/contact">
+              <Contacteznous/>
+            </Route>
+
+            <Route exact path="/mettrejourinscription">
+              <Mettrejourinscription/>
+            </Route>
+
+            <Route exact path="/raporterrendezvous">
+              <Raporterrendezvous/>
+            </Route>
+
+            <Route exact path="/profilvisiteur">
+              <Profilvisiteur/>
+            </Route>
+
+            <Route exact path="/affectationrendezvous">
+              <Affectationrendezvous/>
+            </Route>
+
       </Switch>
       </Router>
     </div>

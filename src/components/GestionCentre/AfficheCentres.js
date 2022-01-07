@@ -28,7 +28,7 @@ const onFinish = (values) => {
   setUpdateMode(false)
 }
 useEffect(() => {
-  document.title = libelle_fr
+  document.title = "Liste des centres"
 })
 useEffect(() => {
   if (updateMode) {
@@ -68,6 +68,10 @@ const layout = {
          <br/>
         <Button>
          <Link to='/Ajoutecentre'>Ajoute Centre</Link></Button>
+         <br />
+<br/>
+<Button>
+         <Link to='/Tableau de bord'>Retour</Link></Button>
          <br />
 <br/>
     {!updateMode ? (

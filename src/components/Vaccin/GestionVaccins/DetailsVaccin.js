@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import * as actions from "../../../redux/actions/vaccin/vaccin"
-import { Descriptions } from 'antd';
+import { Descriptions, Button } from 'antd';
+import { Link } from "react-router-dom"
 import 'antd/dist/antd.css';
 
 
@@ -15,9 +16,9 @@ function DetailsVaccin() {
 
   const { vaccinId } = useParams()
   console.log(vaccinId)
-  // console.log("useParams(): ", useParams())
-  // console.log("useLocation(): ", useLocation())
-
+  useEffect(() => {
+    document.title = "Détails de vaccin"
+  })
   useEffect(() => {
 
     // const fetchData = async () => {
@@ -36,6 +37,10 @@ function DetailsVaccin() {
   // }, [task])
   return (
     <div >
+      <Button>
+         <Link to='/Listpagevaccin'>Retour</Link></Button>
+         <br />
+<br/>
           {loading ? (
         <div>Loading ... </div>
       ) : (
