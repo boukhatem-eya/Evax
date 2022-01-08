@@ -70,14 +70,15 @@ function App() {
       <Router>
     <Switch>
     <Route exact path="/">
-              <Redirect to="/Tableau de bord" />
-            </Route>
-            <Route exact path="/Tableau de bord">
-              <Accueil />
+              <Redirect to="/Connexionadmin" />
             </Route>
             <Route exact path="/Connexionadmin">
               <ConnexionAdmin  />
             </Route>
+            <Route exact path="/Tableau de bord">
+              <Accueil />
+            </Route>
+            
             <Route exact path="/AjoutCitoyen">
       <AjoutCitoyen />
       </Route>  

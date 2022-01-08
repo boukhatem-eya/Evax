@@ -23,12 +23,8 @@ export const ajoutevaccin = (vaccin) => async (dispatch) => {
         type: types.AJOUTE_VACCIN_SUCCES,
         vaccin: nouveauVacin,
       })
-     } catch (error) {
-      const errors = error.response.data.errors
-      console.log(error)
-      if (errors) {
-          errors.forEach(error => toast.error(error.msg))
-      }
+     } catch (e){
+      console.log(e)
       dispatch({
         type: types.AJOUTE_VACCIN_ECHEC,
       })
